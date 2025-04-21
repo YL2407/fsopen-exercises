@@ -60,6 +60,7 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
   const [message, setMessage] = useState(null);
+  const [type, setType] = useState('green');
 
   useEffect(() => {
     personService.getAll().then(initialPersons=>{
@@ -91,8 +92,9 @@ const App = () => {
       .then(returnedPerson=>setPersons(persons.map(p=>p.id===returnedPerson.id?returnedPerson:p)))
   }
 
-  const pushNotif = (message) =>{
-    setMessage(message, 'green');
+  const pushNotif = (message, type) =>{
+    setMessage(message);
+    setType(type);
     setTimeout(()=>{
       setMessage(null)
     }, 5000);
@@ -108,10 +110,14 @@ const App = () => {
       number: newNumber
     }
     if(!existing){ 
-      personService.create(personObj).then(returnedPerson=>setPersons(persons.concat(returnedPerson)))
+      personService.create(personObj)
+        .then(returnedPerson=>setPersons(persons.concat(returnedPerson)))
+        .catch(e=>{
+          pushNotif(e.response.data.error, 'red')
+        })
       setNewName('');
       setNewNumber('');
-      pushNotif(`Added ${newName}`)
+      pushNotif(`Added ${newName}`, 'green')
     }
     else{
       if(window.confirm(`${newName} has already been added to the phonebook, replace the old number with a new one?`)){
@@ -130,7 +136,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={message}/>
+      <Notification message={message} type={type}/>
       <div>
         <Filter value={filter} onChange={handleFilterChange}/>
       </div>
