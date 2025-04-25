@@ -1,0 +1,34 @@
+DELETE http://localhost:3003/api/blogs/68095670fb6de7b0604e33a2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJsb2dVc2VyIiwiaWQiOiI2ODA4YmEyZTc3ODY2YzZjMGE5MjIxODYiLCJpYXQiOjE3NDU0NDQ3NTgsImV4cCI6MTc0NTQ0ODM1OH0.uQhu4BiDrdUgOrEFrSSy-dzPLIf8aCy6tQjxGiInKoA
+###
+DELETE http://localhost:3003/api/blogs/68095ecc95cab6ada3a9e576
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJsb2dVc2VyIiwiaWQiOiI2ODA4YmEyZTc3ODY2YzZjMGE5MjIxODYiLCJpYXQiOjE3NDU0NDQ3NTgsImV4cCI6MTc0NTQ0ODM1OH0.uQhu4BiDrdUgOrEFrSSy-dzPLIf8aCy6tQjxGiInKoA
+###
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username": "blogUser",
+    "password": "iwr"
+}
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJsb2dVc2VyIiwiaWQiOiI2ODA4YmEyZTc3ODY2YzZjMGE5MjIxODYiLCJpYXQiOjE3NDU0NDQyODksImV4cCI6MTc0NTQ0Nzg4OX0.5xEP9LRZtnstVz52cPUdQx0qsX2mEoj8_FJj4QlrwtI
+
+{
+    "title":"amazing blog",
+    "author":"Anony Mous",
+    "url":"howwouldiknow.com",
+    "likes":-1
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "blogUser",
+    "name": "Blog Writer",
+    "password": "iwr"
+}
